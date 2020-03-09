@@ -1,0 +1,15 @@
+1. Abre el powershell y dirijete a la carpeta del script cs
+
+2. compilalo :
+
+   Add-Type -TypeDefinition ([IO.File]::ReadAllText("$pwd\Source.cs")) -ReferencedAssemblies "System.Windows.Forms" -OutputAssembly "xd.dll"
+
+3. Eso generara un DLL
+
+4. PS C:\> [Reflection.Assembly]::Load([IO.File]::ReadAllBytes("$pwd\xd.dll"))
+
+GAC    Version        Location
+---    -------        --------
+False  v4.0.30319
+
+PS C:\> [xd]::Execute("C:\Windows\System32\cmd.exe")
